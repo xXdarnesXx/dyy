@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TeAmoUnMontónAndy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #fff8f0;
+      overflow: hidden;
+      position: relative; 
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+    }
+
+    #nextBtn {
+      position: absolute;
+      top: 88%;
+      right: 9%;
+      transform: translateY(-50%);
+      width: 240px;
+      height: 90%;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="imagen" src="im1.png" alt="Imagen 1" />
+  <button id="nextBtn" aria-label="Siguiente imagen"></button>
+
+  <script>
+    const imagePaths = [];
+
+    // Llenar el array con los nombres im1.png hasta im12.png
+    for (let i = 1; i <= 12; i++) {
+      imagePaths.push(`im${i}.png`);
+    }
+
+    let currentIndex = 0;
+
+    const imgElement = document.getElementById('imagen');
+    const nextBtn = document.getElementById('nextBtn');
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % imagePaths.length;
+      imgElement.src = imagePaths[currentIndex];
+      imgElement.alt = `Imagen ${currentIndex + 1}`;
+    });
+  </script>
+
+</body>
+</html>
